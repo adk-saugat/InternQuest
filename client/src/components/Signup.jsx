@@ -2,12 +2,33 @@ import { FaEye } from "react-icons/fa"
 import { FaEyeSlash } from "react-icons/fa"
 
 import { useState } from "react"
+import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
+const defaultUserCredential = {
+  displayName: "",
+  username: "",
+  password: "",
+}
+
 function Signup() {
+  const [userCredential, setUserCredential] = useState(defaultUserCredential)
   const [showPassword, setShowPassword] = useState(false)
 
   const navigate = useNavigate()
+
+  const handleSignUp = async (e) => {
+    e.preventDefault()
+    try {
+      const user = await axios.post(
+        "http://localhost:3000/users/register",
+        userCredential
+      )
+      console.log("Success")
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <div className="w-[80%] flex justify-center items-center">
@@ -15,16 +36,22 @@ function Signup() {
         <h2 className="text-center text-3xl font-semibold my-4">
           Hello there!
         </h2>
-        <form action="">
+        <form onSubmit={(e) => handleSignUp(e)}>
           <div>
             <label htmlFor="displayName" className="text-lg block ml-2 mb-2">
               Display Name
             </label>
             <input
               type="text"
+              id="displayName"
+              onChange={(e) =>
+                setUserCredential({
+                  ...userCredential,
+                  displayName: e.target.value,
+                })
+              }
               placeholder="e.g. John"
               className="border border-gray-300 rounded-2xl px-3 py-2 w-full"
-              id="displayName"
               required
             />
           </div>
@@ -34,6 +61,12 @@ function Signup() {
             </label>
             <input
               type="email"
+              onChange={(e) =>
+                setUserCredential({
+                  ...userCredential,
+                  username: e.target.value,
+                })
+              }
               placeholder="e.g. john@gmail.com"
               className="border border-gray-300 rounded-2xl px-3 py-2 w-full"
               id="username"
@@ -47,6 +80,12 @@ function Signup() {
             <div className="flex items-center">
               <input
                 type={showPassword ? "text" : "password"}
+                onChange={(e) =>
+                  setUserCredential({
+                    ...userCredential,
+                    password: e.target.value,
+                  })
+                }
                 placeholder="********"
                 className="border border-gray-300 rounded-2xl px-3 py-2 w-full"
                 id="password"
