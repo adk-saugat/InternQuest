@@ -1,9 +1,9 @@
 import { FaEye } from "react-icons/fa"
 import { FaEyeSlash } from "react-icons/fa"
 
-import { useState } from "react"
-import axios from "axios"
+import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { UserContext } from "../contexts/userContext"
 
 const defaultUserCredential = {
   displayName: "",
@@ -14,20 +14,13 @@ const defaultUserCredential = {
 function Signup() {
   const [userCredential, setUserCredential] = useState(defaultUserCredential)
   const [showPassword, setShowPassword] = useState(false)
+  const { dispatchUser } = useContext(UserContext)
 
   const navigate = useNavigate()
 
   const handleSignUp = async (e) => {
     e.preventDefault()
-    try {
-      const user = await axios.post(
-        "http://localhost:3000/users/register",
-        userCredential
-      )
-      console.log("Success")
-    } catch (error) {
-      console.log(error)
-    }
+    dispatchUser({ type: "REGISTER_USER", payload: userCredential })
   }
 
   return (
