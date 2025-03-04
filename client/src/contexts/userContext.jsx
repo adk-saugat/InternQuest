@@ -1,19 +1,6 @@
 import { createContext, useReducer } from "react"
 import axios from "axios"
 
-const registerUser = async (userCredential) => {
-  console.log("register User")
-  try {
-    const user = await axios.post(
-      "http://localhost:3000/users/register",
-      userCredential
-    )
-    localStorage.setItem("auth_token", user.data.token)
-  } catch (error) {
-    console.log(error.response.data)
-  }
-}
-
 export const UserContext = createContext()
 
 const userReducer = (user, action) => {
@@ -22,6 +9,11 @@ const userReducer = (user, action) => {
   switch (type) {
     case "REGISTER_USER": {
       registerUser(payload)
+      return user
+    }
+
+    case "LOGIN_USER": {
+      loginUser(payload)
       return user
     }
 
@@ -38,3 +30,31 @@ const UserProvider = ({ children }) => {
 }
 
 export default UserProvider
+
+// Registering User
+const registerUser = async (userCredential) => {
+  // console.log("register User")
+  try {
+    const user = await axios.post(
+      "http://localhost:3000/users/register",
+      userCredential
+    )
+    localStorage.setItem("auth_token", user.data.token)
+  } catch (error) {
+    console.log(error.response.data)
+  }
+}
+
+// Login User
+const loginUser = async (userCredential) => {
+  console.log("login User")
+  try {
+    const user = await axios.post(
+      "http://localhost:3000/users/login",
+      userCredential
+    )
+    localStorage.setItem("auth_token", user.data.token)
+  } catch (error) {
+    console.log(error.response.data)
+  }
+}
