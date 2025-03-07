@@ -33,7 +33,6 @@ export default UserProvider
 
 // Registering User
 const registerUser = async (userCredential) => {
-  // console.log("register User")
   try {
     const user = await axios.post(
       "http://localhost:3000/users/register",
