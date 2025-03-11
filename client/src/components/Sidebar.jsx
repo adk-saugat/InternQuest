@@ -13,32 +13,32 @@ function Sidebar({ setActivePage }) {
           onClick={() => setActivePage("dashboard")}
           className="px-8 py-2 hover:bg-gray-600 hover:shadow-2xl flex items-center gap-2 cursor-pointer"
         >
-          <GoHome />
+          <GoHome size="25" />
           <span>Dashboard</span>
         </li>
         <li
           onClick={() => setActivePage("internships")}
           className="px-8 py-2 hover:bg-gray-600 hover:shadow-2xl flex items-center gap-2 cursor-pointer"
         >
-          <IoBookOutline />
+          <IoBookOutline size="25" />
           <span>Internships</span>
         </li>
         <li
           onClick={() => setActivePage("settings")}
           className="px-8 py-2 hover:bg-gray-600 hover:shadow-2xl flex items-center gap-2 cursor-pointer"
         >
-          <IoSettingsOutline />
+          <IoSettingsOutline size="25" />
           <span>Settings</span>
         </li>
         <li
           onClick={() => setActivePage("help")}
           className="px-8 py-2 hover:bg-gray-600 hover:shadow-2xl flex items-center gap-2 cursor-pointer"
         >
-          <BiHelpCircle />
+          <BiHelpCircle size="25" />
           <span>Help</span>
         </li>
         <li className="px-8 py-2 mt-80 hover:bg-gray-600 hover:shadow-2xl flex items-center gap-2 cursor-pointer">
-          <BiLogOut />
+          <BiLogOut size="25" />
           <span>Log Out</span>
         </li>
       </ul>
