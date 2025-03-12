@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useState } from "react"
 
 import Dashboard from "../components/Dashboard"
 import Sidebar from "../components/Sidebar"
@@ -7,12 +6,6 @@ import Internships from "../components/Internships"
 
 function DashboardPage() {
   const [activePage, setActivePage] = useState("dashboard")
-  const navigate = useNavigate()
-  useEffect(() => {
-    if (localStorage.length == 0) {
-      //navigate("/")
-    }
-  }, [])
   return (
     <div className="w-screen h-screen flex">
       <div className="w-[15%] h-full bg-[#212529] text-white min-w-[200px]">

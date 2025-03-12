@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs"
 
 import { User } from "../model/userModel.js"
 import { generateAuthToken } from "../controller/generateToken.js"
+import { auth } from "../middleware/auth.js"
 
 const userRouter = express.Router()
 
@@ -51,4 +52,15 @@ userRouter.post("/login", async (req, res) => {
     res.status(400).send({ error: error.message })
   }
 })
+
+userRouter.post("/logout", auth, async (req, res) => {
+  try {
+    req.user.token = ""
+    await req.user.save()
+    res.send()
+  } catch (error) {
+    res.status(400).send(error)
+  }
+})
+
 export { userRouter }

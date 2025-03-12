@@ -1,10 +1,23 @@
 import jwt from "jsonwebtoken"
 import { User } from "../model/userModel.js"
 
-const auth = (req, res) => {
+const auth = async (req, res, next) => {
   try {
-    const {} = req.body
+    const token = req.header("auth-token")
+    const decoded = jwt.verify(token, process.env.SECRET_KEY)
+    const user = await User.findOne({ _id: decoded._id, token })
+
+    if (!user) {
+      throw new Error()
+    }
+
+    req.user = user
+    console.log(req.user)
+
+    next()
   } catch (error) {
-    res.status(400).send()
+    res.status(400).send({ error: "Please Authenticate!" })
   }
 }
+
+export { auth }

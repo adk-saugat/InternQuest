@@ -21,6 +21,7 @@ function Login() {
     e.preventDefault()
     console.log(userCredential)
     dispatchUser({ type: "LOGIN_USER", payload: userCredential })
+    navigate("/dashboard")
   }
 
   return (

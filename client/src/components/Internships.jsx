@@ -1,4 +1,3 @@
-import { CiFilter } from "react-icons/ci"
 import { IoIosAdd } from "react-icons/io"
 import { CiSearch } from "react-icons/ci"
 

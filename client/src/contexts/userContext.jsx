@@ -1,7 +1,12 @@
 import { createContext, useReducer } from "react"
 import axios from "axios"
 
-export const UserContext = createContext()
+axios.defaults.baseURL = "http://localhost:3000"
+
+export const UserContext = createContext({
+  user: null,
+  dispatchUser: () => {},
+})
 
 const userReducer = (user, action) => {
   const { type, payload } = action
@@ -14,6 +19,11 @@ const userReducer = (user, action) => {
 
     case "LOGIN_USER": {
       loginUser(payload)
+      return user
+    }
+
+    case "LOGOUT_USER": {
+      logoutUser()
       return user
     }
 
@@ -34,11 +44,8 @@ export default UserProvider
 // Registering User
 const registerUser = async (userCredential) => {
   try {
-    const user = await axios.post(
-      "http://localhost:3000/users/register",
-      userCredential
-    )
-    localStorage.setItem("auth_token", user.data.token)
+    const user = await axios.post("/users/register", userCredential)
+    localStorage.setItem("auth-token", user.data.token)
   } catch (error) {
     console.log(error.response.data)
   }
@@ -48,12 +55,27 @@ const registerUser = async (userCredential) => {
 const loginUser = async (userCredential) => {
   console.log("login User")
   try {
-    const user = await axios.post(
-      "http://localhost:3000/users/login",
-      userCredential
-    )
-    localStorage.setItem("auth_token", user.data.token)
+    const user = await axios.post("/users/login", userCredential)
+    localStorage.setItem("auth-token", user.data.token)
   } catch (error) {
     console.log(error.response.data)
+  }
+}
+
+const logoutUser = async () => {
+  try {
+    const token = localStorage.getItem("auth-token")
+    const user = await axios.post(
+      "/users/logout",
+      {},
+      {
+        headers: {
+          "auth-token": token,
+        },
+      }
+    )
+    localStorage.removeItem("auth-token")
+  } catch (error) {
+    console.log(error)
   }
 }

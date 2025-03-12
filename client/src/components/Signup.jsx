@@ -21,6 +21,7 @@ function Signup() {
   const handleSignUp = async (e) => {
     e.preventDefault()
     dispatchUser({ type: "REGISTER_USER", payload: userCredential })
+    navigate("/dashboard")
   }
 
   return (
