@@ -1,7 +1,7 @@
 import { createContext, useReducer } from "react"
 import axios from "axios"
 
-axios.defaults.baseURL = "http://localhost:3000"
+axios.defaults.baseURL = "http://localhost:8000"
 
 export const UserContext = createContext({
   user: null,
@@ -13,12 +13,12 @@ const userReducer = (user, action) => {
 
   switch (type) {
     case "REGISTER_USER": {
-      registerUser(payload)
+      user = registerUser(payload)
       return user
     }
 
     case "LOGIN_USER": {
-      loginUser(payload)
+      user = loginUser(payload)
       return user
     }
 
@@ -46,6 +46,7 @@ const registerUser = async (userCredential) => {
   try {
     const user = await axios.post("/users/register", userCredential)
     localStorage.setItem("auth-token", user.data.token)
+    return user
   } catch (error) {
     console.log(error.response.data)
   }
@@ -57,6 +58,7 @@ const loginUser = async (userCredential) => {
   try {
     const user = await axios.post("/users/login", userCredential)
     localStorage.setItem("auth-token", user.data.token)
+    return user
   } catch (error) {
     console.log(error.response.data)
   }

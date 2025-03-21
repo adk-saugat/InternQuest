@@ -13,7 +13,7 @@ const defaultUserCredential = {
 function Login() {
   const [userCredential, setUserCredential] = useState(defaultUserCredential)
   const [showPassword, setShowPassword] = useState(false)
-  const { dispatchUser } = useContext(UserContext)
+  const { user, dispatchUser } = useContext(UserContext)
 
   const navigate = useNavigate()
 
@@ -21,7 +21,9 @@ function Login() {
     e.preventDefault()
     console.log(userCredential)
     dispatchUser({ type: "LOGIN_USER", payload: userCredential })
-    navigate("/dashboard")
+    if (user) {
+      navigate("/dashboard")
+    }
   }
 
   return (

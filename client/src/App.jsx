@@ -7,11 +7,13 @@ import DashboardPage from "./routes/DashboardPage"
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<LoginPage />} />
-      <Route path="/signup" element={<SignupPage />} />
-      <Route path="/dashboard" element={<DashboardPage />} />
-    </Routes>
+    <div className="font-libre">
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+      </Routes>
+    </div>
   )
 }
 

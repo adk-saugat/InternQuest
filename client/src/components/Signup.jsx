@@ -20,8 +20,13 @@ function Signup() {
 
   const handleSignUp = async (e) => {
     e.preventDefault()
-    dispatchUser({ type: "REGISTER_USER", payload: userCredential })
-    navigate("/dashboard")
+    const user = dispatchUser({
+      type: "REGISTER_USER",
+      payload: userCredential,
+    })
+    if (user) {
+      navigate("/dashboard")
+    }
   }
 
   return (

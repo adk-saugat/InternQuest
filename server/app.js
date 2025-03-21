@@ -6,7 +6,7 @@ import { userRouter } from "./routes/userRouter.js"
 import { appRouter } from "./routes/applicationRouter.js"
 
 const app = express()
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 8000
 
 app.use(express.json())
 app.use(cors())
