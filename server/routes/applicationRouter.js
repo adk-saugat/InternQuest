@@ -17,4 +17,15 @@ appRouter.post("/create", auth, async (req, res) => {
   }
 })
 
+appRouter.get("/all", auth, async (req, res) => {
+  try {
+    const applications = await Application.find({
+      token: req.header["auth-token"],
+    })
+    res.status(200).send(applications)
+  } catch (error) {
+    res.status(400).send(error)
+  }
+})
+
 export { appRouter }
