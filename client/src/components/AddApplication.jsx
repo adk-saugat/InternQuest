@@ -20,6 +20,7 @@ function AddApplication({ setShowAdd }) {
     e.preventDefault()
     dispatchApp({ type: "CREATE_APPLICATION", payload: addForm })
     setShowAdd(false)
+    location.reload()
   }
   return (
     <div className="bg-[rgba(0,0,0,0.4)] w-screen h-screen absolute top-0 left-0 flex justify-center items-center">
@@ -111,7 +112,7 @@ function AddApplication({ setShowAdd }) {
           <div className="flex justify-end">
             <button
               type="submit"
-              className="w-cover  mt-4 text-lg bg-[#212529] px-10 py-2 rounded-2xl text-white cursor-pointer hover:shadow-lg hover:bg-[#353535]"
+              className="w-cover mt-4 text-lg bg-[#212529] px-10 py-2 rounded-2xl text-white cursor-pointer hover:shadow-lg hover:bg-[#353535]"
             >
               Create
             </button>

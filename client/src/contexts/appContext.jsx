@@ -16,6 +16,9 @@ const appReducer = (applications, action) => {
       createApplication(payload)
       return applications
     }
+    case "SET_APPLICATIONS": {
+      return payload
+    }
     default:
       return applications
   }
@@ -30,6 +33,7 @@ const AppProvider = ({ children }) => {
 
 export default AppProvider
 
+// Creating Application
 const createApplication = async (appData) => {
   try {
     const token = localStorage.getItem("auth-token")

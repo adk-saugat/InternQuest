@@ -8,7 +8,7 @@ import { IoSettingsOutline } from "react-icons/io5"
 import { BiLogOut } from "react-icons/bi"
 import { BiHelpCircle } from "react-icons/bi"
 
-function Sidebar({ setActivePage }) {
+function Sidebar() {
   const { dispatchUser } = useContext(UserContext)
   const navigate = useNavigate()
 
@@ -21,35 +21,35 @@ function Sidebar({ setActivePage }) {
     <div className="w-full my-8 flex flex-col items-center">
       <ul className="flex flex-col gap-4 text-lg">
         <li
-          onClick={() => setActivePage("dashboard")}
+          onClick={() => navigate("/dashboard")}
           className="px-8 py-2 hover:bg-gray-600 hover:shadow-2xl flex items-center gap-2 cursor-pointer"
         >
           <GoHome size="25" />
           <span>Dashboard</span>
         </li>
         <li
-          onClick={() => setActivePage("internships")}
+          onClick={() => navigate("/dashboard/internships")}
           className="px-8 py-2 hover:bg-gray-600 hover:shadow-2xl flex items-center gap-2 cursor-pointer"
         >
           <IoBookOutline size="25" />
           <span>Internships</span>
         </li>
         <li
-          onClick={() => setActivePage("settings")}
+          // onClick={() => setActivePage("settings")}
           className="px-8 py-2 hover:bg-gray-600 hover:shadow-2xl flex items-center gap-2 cursor-pointer"
         >
           <IoSettingsOutline size="25" />
           <span>Settings</span>
         </li>
         <li
-          onClick={() => setActivePage("help")}
+          // onClick={() => setActivePage("help")}
           className="px-8 py-2 hover:bg-gray-600 hover:shadow-2xl flex items-center gap-2 cursor-pointer"
         >
           <BiHelpCircle size="25" />
           <span>Help</span>
         </li>
         <li
-          onClick={handleLogOut}
+          // onClick={handleLogOut}
           className="px-8 py-2 mt-80 hover:bg-gray-600 hover:shadow-2xl flex items-center gap-2 cursor-pointer"
         >
           <BiLogOut size="25" />

@@ -19,10 +19,11 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault()
-    console.log(userCredential)
-    dispatchUser({ type: "LOGIN_USER", payload: userCredential })
-    if (user) {
+    try {
+      dispatchUser({ type: "LOGIN_USER", payload: userCredential })
       navigate("/dashboard")
+    } catch (error) {
+      console.log(error)
     }
   }
 

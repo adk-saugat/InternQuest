@@ -6,3 +6,20 @@
   --font-advent: Advent Pro;
   --font-libre: Libre Franklin;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  overflow-x: hidden;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
