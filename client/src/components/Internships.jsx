@@ -22,7 +22,7 @@ function Internships() {
   }, [])
 
   return (
-    <div className="w-full h-screen py-6 box-border">
+    <div className="w-full h-screen box-border">
       <header className="h-[10%] px-8 flex flex-row items-center justify-between">
         <h1 className="text-3xl font-normal">Internships</h1>
         <div className="flex flex-row items-center">
@@ -42,7 +42,7 @@ function Internships() {
         </button>
       </header>
       {showAdd && <AddApplication setShowAdd={setShowAdd} />}
-      <section className="px-8 py-6 pb-2 grid gap-6 grid-cols-3 overflow-scroll h-[90%]">
+      <section className="px-8 py-6 pb-0 grid gap-6 grid-cols-4 overflow-scroll h-[90%] bg-neutral-100">
         {applications &&
           applications.map((application) => {
             return <AppCard key={application._id} application={application} />

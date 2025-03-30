@@ -49,7 +49,7 @@ function Sidebar() {
           <span>Help</span>
         </li>
         <li
-          // onClick={handleLogOut}
+          onClick={handleLogOut}
           className="px-8 py-2 mt-80 hover:bg-gray-600 hover:shadow-2xl flex items-center gap-2 cursor-pointer"
         >
           <BiLogOut size="25" />

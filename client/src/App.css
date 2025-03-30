@@ -3,8 +3,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-advent: Advent Pro;
-  --font-libre: Libre Franklin;
+  --font-advent: "Advent Pro", sans-serif;
+  --font-libre: "Libre Franklin", sans-serif;
 }
 
 /* width */

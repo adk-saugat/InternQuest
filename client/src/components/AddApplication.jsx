@@ -80,7 +80,6 @@ function AddApplication({ setShowAdd }) {
                 <option value="Applied">Applied</option>
                 <option value="Accepted">Accepted</option>
                 <option value="Rejected">Rejected</option>
-                <option value="In Progress">In Progress</option>
               </select>
             </div>
             <div className="flex flex-col gap-1 w-full">
