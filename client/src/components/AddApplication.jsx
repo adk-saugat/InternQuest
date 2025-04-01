@@ -14,13 +14,12 @@ function AddApplication({ setShowAdd }) {
   const [addForm, setAddForm] = useState(defaultAddForm)
   const { companyName, position, status, link, notes } = addForm
 
-  const { dispatchApp } = useContext(AppContext)
+  const { createApplication } = useContext(AppContext)
 
   const handleAddApplication = (e) => {
     e.preventDefault()
-    dispatchApp({ type: "CREATE_APPLICATION", payload: addForm })
+    createApplication(addForm)
     setShowAdd(false)
-    location.reload()
   }
   return (
     <div className="bg-[rgba(0,0,0,0.4)] w-screen h-screen absolute top-0 left-0 flex justify-center items-center">

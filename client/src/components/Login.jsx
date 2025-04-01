@@ -13,18 +13,14 @@ const defaultUserCredential = {
 function Login() {
   const [userCredential, setUserCredential] = useState(defaultUserCredential)
   const [showPassword, setShowPassword] = useState(false)
-  const { user, dispatchUser } = useContext(UserContext)
+  const { loginUser } = useContext(UserContext)
 
   const navigate = useNavigate()
 
   const handleLogin = async (e) => {
     e.preventDefault()
-    try {
-      dispatchUser({ type: "LOGIN_USER", payload: userCredential })
-      navigate("/dashboard")
-    } catch (error) {
-      console.log(error)
-    }
+    loginUser(userCredential)
+    navigate("/dashboard")
   }
 
   return (

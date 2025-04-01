@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router"
+import { Route, Routes, useNavigate } from "react-router"
 import "./App.css"
 
 import LoginPage from "./routes/LoginPage"
@@ -6,8 +6,17 @@ import SignupPage from "./routes/SignupPage"
 import DashboardPage from "./routes/DashboardPage"
 import Dashboard from "./components/Dashboard"
 import Internships from "./components/Internships"
+import { useEffect } from "react"
 
 function App() {
+  const navigate = useNavigate()
+  useEffect(() => {
+    const token = localStorage.getItem("auth-token")
+
+    if (token) {
+      navigate("/dashboard")
+    }
+  }, [])
   return (
     <div className="font-libre">
       <Routes>

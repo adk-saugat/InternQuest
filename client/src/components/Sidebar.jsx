@@ -9,12 +9,12 @@ import { BiLogOut } from "react-icons/bi"
 import { BiHelpCircle } from "react-icons/bi"
 
 function Sidebar() {
-  const { dispatchUser } = useContext(UserContext)
+  const { logoutUser } = useContext(UserContext)
   const navigate = useNavigate()
 
   const handleLogOut = (e) => {
     e.preventDefault()
-    dispatchUser({ type: "LOGOUT_USER" })
+    logoutUser()
     navigate("/")
   }
   return (

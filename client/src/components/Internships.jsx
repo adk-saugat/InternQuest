@@ -3,23 +3,11 @@ import { CiSearch } from "react-icons/ci"
 import { useContext, useEffect, useState } from "react"
 import AddApplication from "./AddApplication"
 import { AppContext } from "../contexts/appContext"
-import axios from "axios"
 import AppCard from "./AppCard"
 
 function Internships() {
   const [showAdd, setShowAdd] = useState(false)
-  const { applications, dispatchApp } = useContext(AppContext)
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/applications/all", {
-        headers: { "auth-token": localStorage.getItem("auth-token") },
-      })
-      .then((response) => {
-        console.log(response)
-        dispatchApp({ type: "SET_APPLICATIONS", payload: response.data })
-      })
-  }, [])
+  const { applications } = useContext(AppContext)
 
   return (
     <div className="w-full h-screen box-border">

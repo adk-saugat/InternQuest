@@ -14,19 +14,14 @@ const defaultUserCredential = {
 function Signup() {
   const [userCredential, setUserCredential] = useState(defaultUserCredential)
   const [showPassword, setShowPassword] = useState(false)
-  const { dispatchUser } = useContext(UserContext)
+  const { registerUser } = useContext(UserContext)
 
   const navigate = useNavigate()
 
   const handleSignUp = async (e) => {
     e.preventDefault()
-    const user = dispatchUser({
-      type: "REGISTER_USER",
-      payload: userCredential,
-    })
-    if (user) {
-      navigate("/dashboard")
-    }
+    registerUser(userCredential)
+    navigate("/dashboard")
   }
 
   return (
