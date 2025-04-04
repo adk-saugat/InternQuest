@@ -21,6 +21,7 @@ function AddApplication({ setShowAdd }) {
     createApplication(addForm)
     setShowAdd(false)
   }
+
   return (
     <div className="bg-[rgba(0,0,0,0.4)] w-screen h-screen absolute top-0 left-0 flex justify-center items-center">
       <div className="w-[600px] h-fit bg-white rounded-2xl p-6">

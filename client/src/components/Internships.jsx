@@ -8,6 +8,20 @@ import AppCard from "./AppCard"
 function Internships() {
   const [showAdd, setShowAdd] = useState(false)
   const { applications } = useContext(AppContext)
+  const [filteredApplications, setFilteredApplications] = useState(applications)
+
+  const handleAppSearch = (e) => {
+    const searchValue = e.target.value.toLowerCase()
+    setFilteredApplications(
+      applications.filter(
+        (application) =>
+          application.companyName.toLowerCase().includes(searchValue) ||
+          application.position.toLowerCase().includes(searchValue)
+      )
+    )
+  }
+
+  useEffect(() => setFilteredApplications(applications), [applications])
 
   return (
     <div className="w-full h-screen box-border">
@@ -19,6 +33,7 @@ function Internships() {
             type="text"
             className="border border-gray-600 rounded-2xl pl-10 py-2 w-[450px]"
             placeholder="Search"
+            onChange={handleAppSearch}
           />
         </div>
         <button
@@ -31,8 +46,8 @@ function Internships() {
       </header>
       {showAdd && <AddApplication setShowAdd={setShowAdd} />}
       <section className="px-8 py-6 pb-0 grid gap-6 grid-cols-4 overflow-scroll h-[90%] bg-neutral-100">
-        {applications &&
-          applications.map((application) => {
+        {filteredApplications &&
+          filteredApplications.map((application) => {
             return <AppCard key={application._id} application={application} />
           })}
       </section>
